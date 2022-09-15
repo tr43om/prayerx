@@ -8,11 +8,13 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "devtools": "react-devtools"
+    "devtools": "react-devtools",
+    "generate:types": "npx openapi --input openapi.json --output ./types --exportCore false --exportServices falseprayerx % npx openapi --input openapi.json --output ./types --exportCore false --exportServices false"
   },
   "dependencies": {
     "@redux-devtools/extension": "^3.2.3",
     "@reduxjs/toolkit": "^1.8.5",
+    "openapi-typescript-codegen": "^0.23.0",
     "react": "18.1.0",
     "react-devtools": "^4.25.0",
     "react-native": "0.70.0",
