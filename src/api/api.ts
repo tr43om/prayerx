@@ -1,5 +1,5 @@
 import {AxiosRequestConfig} from 'axios';
-import {http} from './http';
+import http from './http';
 
 export const api = {
   get: async (url: string, config?: AxiosRequestConfig) => {

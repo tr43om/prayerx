@@ -3,29 +3,28 @@ import {ACCESS_TOKEN} from '../../constants';
 import {AuthSignInDto, AuthSignUpDto} from '../../types';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import http from '../http';
 
-export const signIn = async ({email, password}: AuthSignInDto) => {
+export const fetchSignIn = async ({email, password}: AuthSignInDto) => {
   try {
-    const {
-      data: {token},
-    } = await api.post('auth/sign-in', {email, password});
+    const data = await api.post('auth/sign-in', {email, password});
 
-    if (token) {
-      await AsyncStorage.setItem(ACCESS_TOKEN, token);
+    if (data.token) {
+      await AsyncStorage.setItem(ACCESS_TOKEN, data.token);
     }
+
+    return data;
   } catch (err) {
-    console.log(err);
+    console.log('ERROR FROM SIGN IN FETCH', err);
   }
 };
 
-export const signUp = async ({email, name, password}: AuthSignUpDto) => {
+export const fetchSignUp = async ({email, name, password}: AuthSignUpDto) => {
   try {
-    const {
-      data: {token},
-    } = await api.post('auth/sign-up', {email, name, password});
+    const data = await api.post('auth/sign-up', {email, name, password});
 
-    if (token) {
-      await AsyncStorage.setItem(ACCESS_TOKEN, token);
+    if (data.token) {
+      await AsyncStorage.setItem(ACCESS_TOKEN, data.token);
     }
   } catch (err) {
     console.log(err);
