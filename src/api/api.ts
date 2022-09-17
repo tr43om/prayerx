@@ -2,56 +2,66 @@ import {AxiosRequestConfig} from 'axios';
 import http from './http';
 
 export const api = {
-  get: async (url: string, config?: AxiosRequestConfig) => {
+  get: async <TResponse>(
+    url: string,
+    config?: AxiosRequestConfig,
+  ): Promise<TResponse> => {
     try {
       const {data} = await http.get(url, config);
       return data;
     } catch (error) {
-      console.log(error);
+      throw error;
     }
   },
 
-  post: async <TData>(
+  post: async <TResponse, TData = {}>(
     url: string,
     data: TData,
     config?: AxiosRequestConfig,
-  ) => {
+  ): Promise<TResponse> => {
     try {
       const res = await http.post(url, data, config);
       return res.data;
     } catch (error) {
-      console.log(error);
+      throw error;
     }
   },
 
-  patch: async <TData>(
+  patch: async <TResponse, TData = {}>(
     url: string,
     data: TData,
     config?: AxiosRequestConfig,
-  ) => {
+  ): Promise<TResponse> => {
     try {
       const res = await http.patch(url, data, config);
       return res.data;
     } catch (error) {
-      console.log(error);
+      throw error;
     }
   },
 
-  put: async <TData>(url: string, data: TData, config?: AxiosRequestConfig) => {
+  put: async <TResponse, TData = {}>(
+    url: string,
+    data: TData,
+    config?: AxiosRequestConfig,
+  ): Promise<TResponse> => {
     try {
       const res = await http.put(url, data, config);
       return res.data;
     } catch (error) {
-      console.log(error);
+      throw error;
     }
   },
 
-  delete: async (url: string, config?: AxiosRequestConfig) => {
+  delete: async <TResponse>(
+    url: string,
+    config?: AxiosRequestConfig,
+  ): Promise<TResponse> => {
     try {
       const res = await http.delete(url, config);
       return res.data;
     } catch (error) {
-      console.log(error);
+      throw error;
     }
   },
 };

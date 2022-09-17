@@ -3,6 +3,7 @@
 /* eslint-disable */
 
 export type {AuthSignInDto} from './models/AuthSignInDto';
+export type {AuthResponseDto} from './models/AuthResponseDto';
 export type {AuthSignUpDto} from './models/AuthSignUpDto';
 export type {Cards} from './models/Cards';
 export type {CardsDto} from './models/CardsDto';
