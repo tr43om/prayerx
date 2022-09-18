@@ -313,6 +313,12 @@ PODS:
   - react-native-mmkv-storage (0.8.0):
     - MMKV (= 1.2.13)
     - React-Core
+  - react-native-safe-area-context (4.3.3):
+    - RCT-Folly
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Core
+    - ReactCommon/turbomodule/core
   - React-perflogger (0.70.0)
   - React-RCTActionSheet (0.70.0):
     - React-Core/RCTActionSheetHeaders (= 0.70.0)
@@ -381,6 +387,9 @@ PODS:
     - React-perflogger (= 0.70.0)
   - RNCAsyncStorage (1.17.10):
     - React-Core
+  - RNScreens (3.17.0):
+    - React-Core
+    - React-RCTImage
   - SocketRocket (0.6.0)
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
@@ -436,6 +445,7 @@ DEPENDENCIES:
   - react-native-flipper (from `../node_modules/react-native-flipper`)
   - react-native-mmkv (from `../node_modules/react-native-mmkv`)
   - react-native-mmkv-storage (from `../node_modules/react-native-mmkv-storage`)
+  - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
   - React-RCTAnimation (from `../node_modules/react-native/Libraries/NativeAnimation`)
@@ -449,6 +459,7 @@ DEPENDENCIES:
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
+  - RNScreens (from `../node_modules/react-native-screens`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -520,6 +531,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-mmkv"
   react-native-mmkv-storage:
     :path: "../node_modules/react-native-mmkv-storage"
+  react-native-safe-area-context:
+    :path: "../node_modules/react-native-safe-area-context"
   React-perflogger:
     :path: "../node_modules/react-native/ReactCommon/reactperflogger"
   React-RCTActionSheet:
@@ -546,6 +559,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon"
   RNCAsyncStorage:
     :path: "../node_modules/@react-native-async-storage/async-storage"
+  RNScreens:
+    :path: "../node_modules/react-native-screens"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -589,6 +604,7 @@ SPEC CHECKSUMS:
   react-native-flipper: c33a4995958ef12a2b2f8290d63bed7adeed7634
   react-native-mmkv: 1265a348a4711097ba29c8bcefd5971f48220f2b
   react-native-mmkv-storage: 8ba3c0216a6df283ece11205b442a3e435aec4e5
+  react-native-safe-area-context: b456e1c40ec86f5593d58b275bd0e9603169daca
   React-perflogger: 77947e49d84e31eb87d454d4ef327542dcfeaebc
   React-RCTActionSheet: 9f5fd6c1666c1a834ab7f45a452ed08b1de44eb8
   React-RCTAnimation: 6fd3db6ca387c8432fd6a26428e940a081bcb476
@@ -602,6 +618,7 @@ SPEC CHECKSUMS:
   React-runtimeexecutor: 80c195ffcafb190f531fdc849dc2d19cb4bb2b34
   ReactCommon: de55f940495d7bf87b5d7bf55b5b15cdd50d7d7b
   RNCAsyncStorage: 0c357f3156fcb16c8589ede67cc036330b6698ca
+  RNScreens: 0df01424e9e0ed7827200d6ed1087ddd06c493f9
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
   Yoga: 82c9e8f652789f67d98bed5aef9d6653f71b04a9
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
