@@ -9,3 +9,10 @@ export const Routes = {
   board: 'Board',
   prayer: 'Prayer',
 };
+
+export enum Statuses {
+  IDLE = 'IDLE',
+  PENDING = 'PENDING',
+  FAILED = 'FAILED',
+  SUCCEEDED = 'SUCCEEDED',
+}

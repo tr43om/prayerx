@@ -6,6 +6,8 @@ export const reducers = {
   user: userReducer,
 };
 
+export * from './users';
+
 export default function* rootSaga(): Generator<any, void, any> {
   const sagas = [userSaga];
 
