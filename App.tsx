@@ -7,6 +7,7 @@ import {
 } from './src/screens';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
+
 import {Routes} from './src/constants';
 
 const App = () => {
