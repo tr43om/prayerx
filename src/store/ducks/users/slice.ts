@@ -5,14 +5,14 @@ import {Statuses} from '../../../constants';
 const initialState: UserSliceType = {
   name: '',
   email: '',
-  requestInProgress: Statuses.IDLE,
+  requestProgress: Statuses.IDLE,
   error: false,
 };
 
 type UserSliceType = {
   name: string;
   email: string;
-  requestInProgress: Statuses;
+  requestProgress: Statuses;
   error: boolean;
 };
 
@@ -21,31 +21,31 @@ const {actions, reducer} = createSlice({
   initialState,
   reducers: {
     requestSignIn: (state, {payload}: PayloadAction<AuthSignInDto>) => {
-      state.requestInProgress = Statuses.PENDING;
+      state.requestProgress = Statuses.PENDING;
     },
     signInFulfilled: (state, {payload}: PayloadAction<AuthResponseDto>) => {
       state.email = payload.email;
       state.name = payload.name;
-      state.requestInProgress = Statuses.SUCCEEDED;
+      state.requestProgress = Statuses.SUCCEEDED;
       state.error = false;
     },
     signInRejected: (state, {payload}) => {
       state.error = payload;
-      state.requestInProgress = Statuses.FAILED;
+      state.requestProgress = Statuses.FAILED;
     },
 
     requestSignUp: (state, {payload}: PayloadAction<AuthSignUpDto>) => {
-      state.requestInProgress = Statuses.PENDING;
+      state.requestProgress = Statuses.PENDING;
     },
     signUpFulfilled: (state, {payload}: PayloadAction<AuthResponseDto>) => {
       state.email = payload.email;
       state.name = payload.name;
-      state.requestInProgress = Statuses.SUCCEEDED;
+      state.requestProgress = Statuses.SUCCEEDED;
       state.error = false;
     },
     signUpRejected: (state, {payload}) => {
       state.error = payload;
-      state.requestInProgress = Statuses.FAILED;
+      state.requestProgress = Statuses.FAILED;
     },
   },
 });

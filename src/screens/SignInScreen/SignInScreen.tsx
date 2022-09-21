@@ -4,14 +4,17 @@ import React from 'react';
 import {FormInput} from '../../components';
 
 import * as yup from 'yup';
-import styled from 'styled-components';
+
 import {useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 import {requestSignIn} from '../../store';
 import {useAppDispatch} from '../../store';
 import {AuthSignInDto} from '../../types';
 
-const SignInScreen = () => {
+import type {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {RootStackParams} from '../root-routes';
+
+const SignInScreen: React.FC<SignInScreenProps> = () => {
   const dispatch = useAppDispatch();
 
   const {handleSubmit, control, reset} = useForm<AuthSignInDto>({
@@ -57,6 +60,6 @@ const schema = yup.object().shape({
   password: yup.string().required('Please Enter your password'),
 });
 
-type SignInScreenProps = {};
+type SignInScreenProps = NativeStackScreenProps<RootStackParams, 'Auth'>;
 
 export default SignInScreen;

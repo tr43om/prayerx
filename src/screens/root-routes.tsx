@@ -1,6 +1,14 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {NavigatorScreenParams} from '@react-navigation/native';
 
-export const RootStack = createNativeStackNavigator();
+export type RootStackParams = {
+  Home: undefined;
+  Auth: undefined;
+  Board: {name: string};
+  Prayer: undefined;
+};
+
+export const RootStack = createNativeStackNavigator<RootStackParams>();
 
 export const AuthStack = createNativeStackNavigator();
 
