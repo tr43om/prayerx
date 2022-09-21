@@ -9,7 +9,8 @@
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "devtools": "react-devtools",
-    "generate:types": "npx openapi --input openapi.json --output ./types --exportCore false --exportServices falseprayerx % npx openapi --input openapi.json --output ./types --exportCore false --exportServices false"
+    "generate:types": "npx openapi --input openapi.json --output ./types --exportCore false --exportServices falseprayerx % npx openapi --input openapi.json --output ./types --exportCore false --exportServices false",
+    "icons:create": "npx @svgr/cli --out-dir ./src/icons --ignore-existing --config-file ./src/icons/svgr-config.json --template ./src/icons/svg-template.js -- ./src/icons/source"
   },
   "dependencies": {
     "@hookform/resolvers": "^2.9.8",
@@ -31,6 +32,7 @@
     "react-native-mmkv-storage": "^0.8.0",
     "react-native-safe-area-context": "^4.3.3",
     "react-native-screens": "^3.17.0",
+    "react-native-svg": "^13.2.0",
     "react-redux": "^8.0.2",
     "redux": "^4.2.0",
     "redux-flipper": "^2.0.2",
