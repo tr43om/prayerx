@@ -2,7 +2,16 @@ import {configureStore} from '@reduxjs/toolkit';
 import createSagaMiddleware from '@redux-saga/core';
 import rootReducer from './rootReducer';
 import {useDispatch} from 'react-redux';
-import {persistStore, persistReducer} from 'redux-persist';
+import {
+  persistStore,
+  persistReducer,
+  REHYDRATE,
+  FLUSH,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from 'redux-persist';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import rootSaga from './ducks';
@@ -22,10 +31,11 @@ const store = configureStore({
     if (__DEV__) {
       const createFlipperDebugger = require('redux-flipper').default;
 
-      return getDefaultMiddleware().concat(
-        sagaMiddleware,
-        createFlipperDebugger(),
-      );
+      return getDefaultMiddleware({
+        serializableCheck: {
+          // ignoreActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+        },
+      }).concat(sagaMiddleware, createFlipperDebugger());
     }
     return getDefaultMiddleware().concat(sagaMiddleware);
   },
