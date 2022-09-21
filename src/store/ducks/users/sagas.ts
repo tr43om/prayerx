@@ -47,7 +47,7 @@ function* fetchSignUp({
   }
 }
 
-export function* watchSaga() {
+function* watchSaga() {
   yield takeLeading(requestSignIn.type, fetchSignIn);
   yield takeLeading(requestSignUp.type, fetchSignUp);
 }

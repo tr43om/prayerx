@@ -25,20 +25,24 @@ const App = () => {
   return (
     <RootStack.Navigator>
       {isAuthenticated === Statuses.SUCCEEDED ? (
-        <RootStack.Group>
+        <>
           <HomeStack.Screen name={Routes.home} component={HomeScreen} />
           <BoardStack.Screen
             name={Routes.board}
             component={BoardScreen}
-            options={({route}) => ({title: route.params.name})}
+            options={({
+              route: {
+                params: {name},
+              },
+            }) => ({title: name})}
           />
           <PrayerStack.Screen name={Routes.prayer} component={PrayerScreen} />
-        </RootStack.Group>
+        </>
       ) : (
-        <RootStack.Group>
+        <>
           <AuthStack.Screen name={Routes.signin} component={SignInScreen} />
           <AuthStack.Screen name={Routes.signup} component={SignUpScreen} />
-        </RootStack.Group>
+        </>
       )}
     </RootStack.Navigator>
   );
