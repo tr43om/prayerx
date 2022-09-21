@@ -13,7 +13,6 @@ const Container = (props: ContainerProps) => {
 
 const Root = styled(View)`
   flex: 1;
-  padding: 25px;
 `;
 
 interface ContainerProps extends PropsWithChildren {}

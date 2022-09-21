@@ -9,8 +9,6 @@ import {
   BoardStack,
   PrayerStack,
   RootStack,
-  AppNavigation,
-  AuthNavigation,
 } from './src/screens';
 
 import React from 'react';
@@ -18,15 +16,27 @@ import {NavigationContainer} from '@react-navigation/native';
 import {Routes, Statuses} from './src/constants';
 import {useSelector} from 'react-redux';
 import {selectAuthRequestProgress} from './src/store';
+import {View, Text} from 'react-native';
 
 const App = () => {
   const isAuthenticated = useSelector(selectAuthRequestProgress);
   console.log(isAuthenticated);
   return (
-    <RootStack.Navigator>
+    <RootStack.Navigator
+      screenOptions={{contentStyle: {backgroundColor: '#fff', padding: 15}}}>
       {isAuthenticated === Statuses.SUCCEEDED ? (
         <>
-          <HomeStack.Screen name={Routes.home} component={HomeScreen} />
+          <HomeStack.Screen
+            name={Routes.home}
+            component={HomeScreen}
+            options={{
+              headerRight: () => (
+                <View>
+                  <Text style={{fontSize: 22}}>+</Text>
+                </View>
+              ),
+            }}
+          />
           <BoardStack.Screen
             name={Routes.board}
             component={BoardScreen}

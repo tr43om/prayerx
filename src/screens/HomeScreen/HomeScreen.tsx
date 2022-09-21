@@ -12,10 +12,9 @@ import {useAppDispatch} from '../../store';
 import {useSelector} from 'react-redux';
 import {selectBoards} from '../../store';
 import {requestGetBoards} from '../../store';
+import {BoardsList} from '../../components';
 
 const HomeScreen: React.FC<HomeScreenProps> = () => {
-  const navigation =
-    useNavigation<NativeStackNavigationProp<RootStackParams>>();
   const dispatch = useAppDispatch();
   const boards = useSelector(selectBoards);
 
@@ -27,13 +26,7 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
 
   return (
     <View>
-      {boards.map(board => (
-        <Button
-          title={board.title}
-          key={board.id}
-          onPress={() => navigation.navigate('Board', {name: board.title})}
-        />
-      ))}
+      <BoardsList boards={boards} />
     </View>
   );
 };
