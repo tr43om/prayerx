@@ -17,11 +17,11 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {Routes, Statuses} from './src/constants';
 import {useSelector} from 'react-redux';
-import {selectAuthRequestProgress} from './src/store';
+import {selectAuthRequestProgress, selectBoards} from './src/store';
 
 const App = () => {
   const isAuthenticated = useSelector(selectAuthRequestProgress);
-  console.log(isAuthenticated);
+
   return (
     <RootStack.Navigator>
       {isAuthenticated === Statuses.SUCCEEDED ? (
