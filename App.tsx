@@ -20,7 +20,7 @@ import {View, Text} from 'react-native';
 
 const App = () => {
   const isAuthenticated = useSelector(selectAuthRequestProgress);
-  console.log(isAuthenticated);
+
   return (
     <RootStack.Navigator
       screenOptions={{contentStyle: {backgroundColor: '#fff', padding: 15}}}>

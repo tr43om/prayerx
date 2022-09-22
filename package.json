@@ -10,7 +10,7 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "devtools": "react-devtools",
     "generate:types": "npx openapi --input openapi.json --output ./types --exportCore false --exportServices falseprayerx % npx openapi --input openapi.json --output ./types --exportCore false --exportServices false",
-    "icons:create": "npx @svgr/cli --out-dir ./src/icons --ignore-existing --config-file ./src/icons/svgr-config.json --template ./src/icons/svg-template.js -- ./src/icons/source"
+    "icons:create": "npx @svgr/cli --config-file ./src/assets/icons/svgrrc.config.js -- ./src/assets/icons/source"
   },
   "dependencies": {
     "@hookform/resolvers": "^2.9.8",

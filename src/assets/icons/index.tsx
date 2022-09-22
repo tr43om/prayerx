@@ -1,0 +1,12 @@
+export {default as IconAdd} from './Add';
+export {default as IconBack} from './Back';
+export {default as IconEdit} from './Edit';
+export {default as IconMenu} from './Menu';
+export {default as IconPrayerLine} from './PrayerLine';
+export {default as IconPrayer} from './Prayer';
+export {default as IconState2} from './State2';
+export {default as IconState} from './State';
+export {default as IconTrash} from './Trash';
+export {default as IconUser1} from './User1';
+export {default as IconUserPlus} from './UserPlus';
+export {default as IconUser} from './User';

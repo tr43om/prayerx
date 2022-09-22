@@ -33,7 +33,7 @@ const store = configureStore({
 
       return getDefaultMiddleware({
         serializableCheck: {
-          // ignoreActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+          ignoreActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
         },
       }).concat(sagaMiddleware, createFlipperDebugger());
     }

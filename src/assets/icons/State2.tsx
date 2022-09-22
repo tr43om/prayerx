@@ -1,10 +1,10 @@
-// Auto-generated file created by svgr-cli source svg-template.js
-// Run yarn icons:create to update
-// Do not edit
 import * as React from 'react';
 import Svg, {SvgProps, Mask, Rect, G, Path} from 'react-native-svg';
 import {memo} from 'react';
 
+// Auto-generated file created by svgr-cli source svg-template.js
+// Run yarn icons:create to update
+// Do not edit
 const SvgState2 = (props: SvgProps) => (
   <Svg
     width={props.width || 256}

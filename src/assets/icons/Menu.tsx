@@ -1,10 +1,10 @@
-// Auto-generated file created by svgr-cli source svg-template.js
-// Run yarn icons:create to update
-// Do not edit
 import * as React from 'react';
 import Svg, {SvgProps, Mask, Path, G} from 'react-native-svg';
 import {memo} from 'react';
 
+// Auto-generated file created by svgr-cli source svg-template.js
+// Run yarn icons:create to update
+// Do not edit
 const SvgMenu = (props: SvgProps) => (
   <Svg
     width={props.width || 256}
