@@ -17,6 +17,7 @@ import {Routes, Statuses} from './src/constants';
 import {useSelector} from 'react-redux';
 import {selectAuthRequestProgress} from './src/store';
 import {View, Text} from 'react-native';
+import {IconAdd} from './src/assets';
 
 const App = () => {
   const isAuthenticated = useSelector(selectAuthRequestProgress);
@@ -32,7 +33,7 @@ const App = () => {
             options={{
               headerRight: () => (
                 <View>
-                  <Text style={{fontSize: 22}}>+</Text>
+                  <IconAdd />
                 </View>
               ),
             }}
