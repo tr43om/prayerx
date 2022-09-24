@@ -13,8 +13,9 @@ import {AuthSignInDto} from '../../types';
 
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParams} from '../root-routes';
+import {Routes} from '../../constants';
 
-const SignInScreen: React.FC<SignInScreenProps> = () => {
+const SignInScreen = () => {
   const dispatch = useAppDispatch();
 
   const {handleSubmit, control, reset} = useForm<AuthSignInDto>({
@@ -60,6 +61,6 @@ const schema = yup.object().shape({
   password: yup.string().required('Please Enter your password'),
 });
 
-type SignInScreenProps = NativeStackScreenProps<RootStackParams, 'Auth'>;
+type SignInScreenProps = NativeStackScreenProps<RootStackParams, Routes.signin>;
 
 export default SignInScreen;

@@ -6,12 +6,14 @@ const initialState: BoardsSliceType = {
   boards: [],
   requestProgress: Statuses.IDLE,
   error: false,
+  creatingNewBoard: true,
 };
 
 type BoardsSliceType = {
   boards: BoardsResponseDto[];
   requestProgress: Statuses;
   error: boolean;
+  creatingNewBoard: boolean;
 };
 
 const {actions, reducer} = createSlice({
@@ -25,7 +27,7 @@ const {actions, reducer} = createSlice({
       state,
       {payload}: PayloadAction<BoardsResponseDto[]>,
     ) => {
-      state.boards = payload;
+      state.boards = payload.reverse();
       state.requestProgress = Statuses.SUCCEEDED;
       state.error = false;
     },
@@ -48,6 +50,10 @@ const {actions, reducer} = createSlice({
     addBoardRejected: (state, {payload}) => {
       state.error = payload;
       state.requestProgress = Statuses.FAILED;
+    },
+
+    toggleCreateBoardModal: state => {
+      state.creatingNewBoard = !state.creatingNewBoard;
     },
 
     requestDeleteBoard: (state, {payload}: PayloadAction<number>) => {
@@ -75,5 +81,6 @@ export const {
   addBoardRejected,
   deleteBoardFulfilled,
   deleteBoardRejected,
+  toggleCreateBoardModal,
 } = actions;
 export const boardsReducer = reducer;

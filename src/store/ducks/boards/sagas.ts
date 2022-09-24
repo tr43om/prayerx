@@ -4,6 +4,7 @@ import {
   call,
   CallEffect,
   PutEffect,
+  delay,
 } from 'redux-saga/effects';
 import {
   requestGetBoards,
@@ -40,6 +41,7 @@ function* fetchAddBoard({
   try {
     const data: BoardsResponseDto = yield call(BoardsAPI.add, payload);
     console.log(data);
+
     yield put(addBoardFulfilled(data));
   } catch (error) {
     yield put(addBoardRejected(error));

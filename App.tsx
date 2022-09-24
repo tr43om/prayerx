@@ -1,61 +1,21 @@
-import {
-  SignInScreen,
-  SignUpScreen,
-  HomeScreen,
-  PrayerScreen,
-  BoardScreen,
-  AuthStack,
-  HomeStack,
-  BoardStack,
-  PrayerStack,
-  RootStack,
-} from './src/screens';
+import {Navigation} from './src/screens';
+
+import {Provider} from 'react-redux';
 
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {Routes, Statuses} from './src/constants';
-import {useSelector} from 'react-redux';
-import {selectAuthRequestProgress} from './src/store';
-import {View, Text} from 'react-native';
-import {IconAdd} from './src/assets';
+
+import store from './src/store/store';
+
+import {PersistGate} from 'redux-persist/integration/react';
+import {persistor} from './src/store/store';
 
 const App = () => {
-  const isAuthenticated = useSelector(selectAuthRequestProgress);
-
   return (
-    <RootStack.Navigator
-      screenOptions={{contentStyle: {backgroundColor: '#fff', padding: 15}}}>
-      {isAuthenticated === Statuses.SUCCEEDED ? (
-        <>
-          <HomeStack.Screen
-            name={Routes.home}
-            component={HomeScreen}
-            options={{
-              headerRight: () => (
-                <View>
-                  <IconAdd />
-                </View>
-              ),
-            }}
-          />
-          <BoardStack.Screen
-            name={Routes.board}
-            component={BoardScreen}
-            options={({
-              route: {
-                params: {name},
-              },
-            }) => ({title: name})}
-          />
-          <PrayerStack.Screen name={Routes.prayer} component={PrayerScreen} />
-        </>
-      ) : (
-        <>
-          <AuthStack.Screen name={Routes.signin} component={SignInScreen} />
-          <AuthStack.Screen name={Routes.signup} component={SignUpScreen} />
-        </>
-      )}
-    </RootStack.Navigator>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <Navigation />
+      </PersistGate>
+    </Provider>
   );
 };
 

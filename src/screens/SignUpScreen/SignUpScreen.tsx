@@ -25,7 +25,7 @@ const SignUpScreen = () => {
   });
 
   const handleSignUp = handleSubmit(data => {
-    // dispatch(requestSignUp(data));
+    dispatch(requestSignUp(data));
     reset();
   });
 

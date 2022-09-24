@@ -1,21 +1,40 @@
-import {View, Text, TextInputProps} from 'react-native';
+import {
+  View,
+  Text,
+  TextInputProps,
+  StyleSheet,
+  TouchableOpacity,
+} from 'react-native';
 import {TextInput} from 'react-native';
 import React from 'react';
-import styled from 'styled-components';
 
-const Input = (props: InputType) => {
+const Input = ({icon, ...props}: InputType) => {
   return (
-    <View>
-      <TextInputStyled {...props} />
+    <View style={styles.container}>
+      <TextInput style={styles.input} {...props} />
+      {icon && <TouchableOpacity>{icon}</TouchableOpacity>}
     </View>
   );
 };
 
-interface InputType extends TextInputProps {}
+interface InputType extends TextInputProps {
+  icon?: JSX.Element;
+}
 
-const TextInputStyled = styled(TextInput)`
-  border: 1px solid black;
-  padding: 10px;
-`;
+const styles = StyleSheet.create({
+  container: {
+    position: 'relative',
+    width: '100%',
+  },
+  input: {
+    width: '100%',
+    borderWidth: 1,
+    borderColor: '#000',
+    padding: 10,
+    marginBottom: 20,
+    borderRadius: 4,
+  },
+  icon: {},
+});
 
 export default Input;

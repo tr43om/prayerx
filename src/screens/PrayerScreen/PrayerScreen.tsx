@@ -3,7 +3,7 @@ import React from 'react';
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParams} from '../root-routes';
 
-const PrayerScreen: React.FC<PrayerScreenProps> = () => {
+const PrayerScreen = ({navigation, route}: PrayerScreenProps) => {
   return (
     <View>
       <Text>PrayerScreen</Text>
@@ -11,6 +11,10 @@ const PrayerScreen: React.FC<PrayerScreenProps> = () => {
   );
 };
 
-type PrayerScreenProps = NativeStackScreenProps<RootStackParams, 'Prayer'>;
+type PrayerScreenProps = NativeStackScreenProps<
+  RootStackParams,
+  'Prayer',
+  undefined
+>;
 
 export default PrayerScreen;
