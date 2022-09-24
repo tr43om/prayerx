@@ -20,13 +20,20 @@ import {selectAuthRequestProgress} from '../store';
 import {Text, TouchableOpacity} from 'react-native';
 import {IconAdd} from '../assets';
 import {AddButton} from '../components';
+import {theme} from '../styles';
 
 const Navigation = () => {
   const isAuthenticated = useSelector(selectAuthRequestProgress);
+
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={theme}>
       <RootStack.Navigator
-        screenOptions={{contentStyle: {backgroundColor: '#fff', padding: 15}}}>
+        screenOptions={{
+          contentStyle: {
+            backgroundColor: `${theme.colors.background}`,
+            padding: 15,
+          },
+        }}>
         {isAuthenticated === Statuses.SUCCEEDED ? (
           <>
             <HomeStack.Screen

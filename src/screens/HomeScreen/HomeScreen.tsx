@@ -19,10 +19,9 @@ const HomeScreen = () => {
   const dispatch = useAppDispatch();
   const boards = useSelector(selectBoards);
 
-  console.log(boards);
-
   useEffect(() => {
     dispatch(requestGetBoards());
+    console.log('DISPATCH');
   }, [dispatch]);
 
   return (

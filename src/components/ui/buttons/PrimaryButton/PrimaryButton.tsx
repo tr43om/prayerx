@@ -6,6 +6,7 @@ import {
 } from 'react-native';
 import React from 'react';
 import {StyleSheet} from 'react-native';
+import {theme} from '../../../../styles';
 
 const PrimaryButton = ({isLoading, title, ...props}: PrimaryButtonProps) => {
   return (
@@ -26,7 +27,7 @@ interface PrimaryButtonProps extends TouchableOpacityProps {
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: '#A369EC',
+    backgroundColor: `${theme.colors.primary}`,
 
     borderRadius: 50,
     paddingHorizontal: 17,
