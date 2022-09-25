@@ -8,5 +8,6 @@ export const theme = {
     background: '#fff',
     text: '#424E75',
     border: '#E5E5E5',
+    placeholder: '#A499B1',
   },
 };

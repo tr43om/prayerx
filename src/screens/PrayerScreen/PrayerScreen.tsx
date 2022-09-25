@@ -10,7 +10,7 @@ const PrayerScreen: React.FC<PrayerScreenProps> = ({
 }: PrayerScreenProps) => {
   return (
     <View>
-      <Text>PrayerScreen</Text>
+      <Text>Prayer</Text>
     </View>
   );
 };

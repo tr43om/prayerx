@@ -66,6 +66,6 @@ function* watchSaga() {
   yield takeLeading(requestAddPrayer.type, fetchAddPrayer);
   yield takeLeading(requestDeletePrayer.type, fetchDeletePrayer);
 }
-export default function* PrayersSaga() {
+export default function* prayersSaga() {
   yield watchSaga();
 }

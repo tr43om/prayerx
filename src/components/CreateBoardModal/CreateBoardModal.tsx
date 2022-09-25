@@ -62,6 +62,7 @@ const CreateBoardModal = () => {
               placeholder="Type a new board name..."
               name="title"
               control={control}
+              onSubmitEditing={addNewBoard}
             />
             <PrimaryButton
               onPress={addNewBoard}

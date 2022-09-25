@@ -43,7 +43,6 @@ interface FormInputProps<TFormValues extends FieldValues>
     Omit<TextInputProps, 'defaultValue'> {
   button?: ReactNode;
   name: Path<TFormValues>;
-  $success?: boolean;
 }
 
 const FieldContainer = styled(View)`

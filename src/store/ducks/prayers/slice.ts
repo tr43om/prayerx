@@ -84,4 +84,4 @@ export const {
   deletePrayerRejected,
   toggleCreatePrayerModal,
 } = actions;
-export const PrayersReducer = reducer;
+export const prayersReducer = reducer;

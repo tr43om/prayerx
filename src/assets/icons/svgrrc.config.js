@@ -7,11 +7,11 @@ module.exports = {
   ext: 'tsx',
   ignoreExisting: true,
   replaceAttrValues: {
-    white: '{props.color || `#FFFFFF`}',
-    '#FFFFFF': '{props.color || `#FFFFFF`}',
-    black: '{props.color || `#000000`}',
-    '#111111': '{props.color || `#000000`}',
-    '#000': '{props.color || `#000000`}',
+    white: '{props.color || theme.colors.primary}',
+    '#FFFFFF': '{props.color || theme.colors.primary}',
+    black: '{props.color || theme.colors.primary}',
+    '#111111': '{props.color || theme.colors.primary}',
+    '#000': '{props.color || theme.colors.primary}',
   },
   svgProps: {
     width: '{props.width || 256}',

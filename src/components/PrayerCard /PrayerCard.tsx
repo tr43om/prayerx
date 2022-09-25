@@ -1,4 +1,4 @@
-import {Text, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
@@ -12,10 +12,10 @@ import Animated, {
 } from 'react-native-reanimated';
 import {theme} from '../../styles';
 import {useAppDispatch} from '../../store';
-import {requestDeleteBoard} from '../../store';
+import {requestDeletePrayer} from '../../store';
 import {DeleteButton} from '../DeleteButton';
 
-const BoardCard = ({title, id}: BoardCardProps) => {
+const PrayerCard = ({title, id}: PrayerCardProps) => {
   const dispatch = useAppDispatch();
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParams>>();
@@ -27,10 +27,10 @@ const BoardCard = ({title, id}: BoardCardProps) => {
       exiting={StretchOutY}>
       <Swipeable
         renderRightActions={() => <DeleteButton />}
-        onSwipeableOpen={() => dispatch(requestDeleteBoard(id))}>
+        onSwipeableOpen={() => dispatch(requestDeletePrayer(id))}>
         <TouchableOpacity
           style={[styles.container]}
-          onPress={() => navigation.navigate('Board', {name: title, id: id})}>
+          onPress={() => navigation.navigate('Prayer')}>
           <Text style={styles.content}>{title}</Text>
         </TouchableOpacity>
       </Swipeable>
@@ -52,9 +52,9 @@ const styles = StyleSheet.create({
   },
 });
 
-type BoardCardProps = {
+type PrayerCardProps = {
   title: string;
   id: number;
 };
 
-export default BoardCard;
+export default PrayerCard;

@@ -12,6 +12,7 @@ const template = (
     componentName.charAt(0).toUpperCase() + componentName.slice(1);
   return tpl`
 ${imports};
+import {theme} from '../../styles';
 
 ${interfaces}
 ${comments}

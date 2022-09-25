@@ -19,6 +19,8 @@ import {useSelector} from 'react-redux';
 import {selectAuthRequestProgress} from '../store';
 import {AddButton} from '../components';
 import {theme} from '../styles';
+import {IconSettings} from '../assets';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 const Navigation = () => {
   const isAuthenticated = useSelector(selectAuthRequestProgress);
@@ -41,10 +43,18 @@ const Navigation = () => {
                 headerRight: () => <AddButton />,
               }}
             />
+
             <BoardStack.Screen
               name={Routes.board}
               component={BoardScreen}
-              options={({route}) => ({title: route.params.name})}
+              options={({route}) => ({
+                title: route.params.name,
+                headerRight: () => (
+                  <TouchableOpacity>
+                    <IconSettings />
+                  </TouchableOpacity>
+                ),
+              })}
             />
             <PrayerStack.Screen name={Routes.prayer} component={PrayerScreen} />
           </>

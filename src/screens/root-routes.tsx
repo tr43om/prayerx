@@ -4,12 +4,12 @@ export type RootStackParams = {
   Home: undefined;
   SignIn: undefined;
   SignUp: undefined;
-  Board: {name: string};
+  Board: {name: string; id: number};
   Prayer: undefined;
 };
 
 export type TabsParams = {
-  Prayers: undefined;
+  Prayers: {id: number};
   Subscriptions: undefined;
 };
 
