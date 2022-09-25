@@ -5,8 +5,9 @@
 export type {AuthSignInDto} from './models/AuthSignInDto';
 export type {AuthResponseDto} from './models/AuthResponseDto';
 export type {AuthSignUpDto} from './models/AuthSignUpDto';
-export type {Cards} from './models/Cards';
-export type {CardsDto} from './models/CardsDto';
+export type {PrayersResponseDto} from './models/PrayersResponseDto';
+export type {PrayersRequestDto} from './models/PrayersRequestDto';
+export type {PrayersUpdateDto} from './models/PrayersUpdateDto';
 export type {BoardsUpdateDto} from './models/BoardsUpdateDto';
 export type {BoardsResponseDto} from './models/BoardsResponseDto';
 export type {BoardsRequestDto} from './models/BoardsRequestDto';
