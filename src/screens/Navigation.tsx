@@ -17,8 +17,6 @@ import {NavigationContainer} from '@react-navigation/native';
 import {Routes, Statuses} from '../constants';
 import {useSelector} from 'react-redux';
 import {selectAuthRequestProgress} from '../store';
-import {Text, TouchableOpacity} from 'react-native';
-import {IconAdd} from '../assets';
 import {AddButton} from '../components';
 import {theme} from '../styles';
 
@@ -43,7 +41,11 @@ const Navigation = () => {
                 headerRight: () => <AddButton />,
               }}
             />
-            <BoardStack.Screen name={Routes.board} component={BoardScreen} />
+            <BoardStack.Screen
+              name={Routes.board}
+              component={BoardScreen}
+              options={({route}) => ({title: route.params.name})}
+            />
             <PrayerStack.Screen name={Routes.prayer} component={PrayerScreen} />
           </>
         ) : (

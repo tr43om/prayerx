@@ -1,10 +1,8 @@
-import {View, ScrollView} from 'react-native';
+import {View} from 'react-native';
 import React from 'react';
-import {useNavigation} from '@react-navigation/core';
 
-import {Button} from 'react-native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
+
 import {RootStackParams} from '../root-routes';
 
 import {useEffect} from 'react';
@@ -15,8 +13,9 @@ import {requestGetBoards} from '../../store';
 import {BoardsList, CreateBoardModal} from '../../components';
 import {RouteProp} from '@react-navigation/core';
 import {Text} from 'react-native';
+import {Routes} from '../../constants';
 
-const HomeScreen = () => {
+const HomeScreen: React.FC<HomeScreenProps> = () => {
   const dispatch = useAppDispatch();
   const boards = useSelector(selectBoards);
 
@@ -34,8 +33,12 @@ const HomeScreen = () => {
 };
 
 type HomeScreenProps = {
-  navigation: NativeStackNavigationProp<RootStackParams, 'Home', undefined>;
-  route: RouteProp<RootStackParams, 'Home'>;
+  navigation: NativeStackNavigationProp<
+    RootStackParams,
+    Routes.home,
+    undefined
+  >;
+  route: RouteProp<RootStackParams, Routes.home>;
 };
 
 export default HomeScreen;

@@ -1,24 +1,27 @@
-import {View, Text, Modal, TouchableOpacity} from 'react-native';
-import React from 'react';
-import {selectCreateBoardModalVisibility} from '../../store';
-import {useSelector} from 'react-redux';
-import {useAppDispatch} from '../../store/store';
-import {toggleCreateBoardModal} from '../../store';
-import {StyleSheet} from 'react-native';
-import {requestAddBoard} from '../../store';
-import {PrimaryButton} from '../ui';
-import {Statuses} from '../../constants';
-import {FormInput} from '../FormInput';
-
 import * as yup from 'yup';
+import React from 'react';
 
 import {useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 
-import {selectBoardRequestProgress} from '../../store';
+import {View, Modal, TouchableOpacity, StyleSheet} from 'react-native';
+import {FormInput} from '../FormInput';
+import {
+  selectCreateBoardModalVisibility,
+  toggleCreateBoardModal,
+  requestAddBoard,
+  selectBoardRequestProgress,
+} from '../../store';
+import {useAppDispatch} from '../../store/store';
+
+import {useSelector} from 'react-redux';
+import {PrimaryButton} from '../ui';
+import {Statuses} from '../../constants';
+
 import {BoardsRequestDto} from '../../types';
 
 const CreateBoardModal = () => {
+  const dispatch = useAppDispatch();
   const isLoading = useSelector(selectBoardRequestProgress);
 
   const isCreateBoardModalVisible = useSelector(
@@ -44,34 +47,30 @@ const CreateBoardModal = () => {
     }
   });
 
-  const dispatch = useAppDispatch();
   return (
     <View style={styles.centeredView}>
-      {isCreateBoardModalVisible && (
-        <Modal
-          animationType="slide"
-          transparent={true}
-          visible={isCreateBoardModalVisible}
-          onRequestClose={() => {
-            dispatch(toggleCreateBoardModal());
-          }}>
-          <TouchableOpacity style={styles.centeredView} activeOpacity={1}>
-            <View style={styles.modalView}>
-              <FormInput
-                placeholder="Type a new board name..."
-                name="title"
-                control={control}
-              />
-              <PrimaryButton
-                onPress={addNewBoard}
-                title="Add Board"
-                isLoading={isLoading === Statuses.PENDING}
-              />
-              <Text>{isLoading}</Text>
-            </View>
-          </TouchableOpacity>
-        </Modal>
-      )}
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={isCreateBoardModalVisible}
+        onRequestClose={() => {
+          dispatch(toggleCreateBoardModal());
+        }}>
+        <TouchableOpacity style={styles.centeredView} activeOpacity={1}>
+          <View style={styles.modalView}>
+            <FormInput
+              placeholder="Type a new board name..."
+              name="title"
+              control={control}
+            />
+            <PrimaryButton
+              onPress={addNewBoard}
+              title="Add Board"
+              isLoading={isLoading === Statuses.PENDING}
+            />
+          </View>
+        </TouchableOpacity>
+      </Modal>
     </View>
   );
 };
@@ -103,17 +102,7 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
   },
-  button: {
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2,
-  },
-  buttonOpen: {
-    backgroundColor: '#F194FF',
-  },
-  buttonClose: {
-    backgroundColor: '#2196F3',
-  },
+
   textStyle: {
     color: 'white',
     fontWeight: 'bold',

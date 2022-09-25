@@ -1,17 +1,20 @@
-import {Button, Text, View} from 'react-native';
+import {Button, View} from 'react-native';
 import React from 'react';
 
 import {FormInput} from '../../components';
 
 import * as yup from 'yup';
-import styled from 'styled-components';
+
 import {useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 import {AuthSignUpDto} from '../../types';
 import {useAppDispatch} from '../../store';
 import {requestSignUp} from '../../store';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {RootStackParams} from '../root-routes';
+import {Routes} from '../../constants';
 
-const SignUpScreen = () => {
+const SignUpScreen: React.FC<SignUpScreenProps> = () => {
   const dispatch = useAppDispatch();
   const {handleSubmit, control, reset} = useForm<AuthSignUpDto>({
     defaultValues: {
@@ -59,6 +62,6 @@ const schema = yup.object().shape({
   name: yup.string().required('Please Enter your name'),
 });
 
-type SignUpScreenProps = {};
+type SignUpScreenProps = NativeStackScreenProps<RootStackParams, Routes.signup>;
 
 export default SignUpScreen;

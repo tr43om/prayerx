@@ -15,7 +15,7 @@ import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParams} from '../root-routes';
 import {Routes} from '../../constants';
 
-const SignInScreen = () => {
+const SignInScreen: React.FC<SignInScreenProps> = () => {
   const dispatch = useAppDispatch();
 
   const {handleSubmit, control, reset} = useForm<AuthSignInDto>({
