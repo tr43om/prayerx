@@ -1,33 +1,48 @@
 import {View, Text, Modal, TouchableOpacity} from 'react-native';
-import React, {useState} from 'react';
+import React from 'react';
 import {selectCreateBoardModalVisibility} from '../../store';
 import {useSelector} from 'react-redux';
 import {useAppDispatch} from '../../store/store';
 import {toggleCreateBoardModal} from '../../store';
 import {StyleSheet} from 'react-native';
-import {Pressable} from 'react-native';
 import {requestAddBoard} from '../../store';
-import {Input} from '../ui';
 import {PrimaryButton} from '../ui';
 import {Statuses} from '../../constants';
+import {FormInput} from '../FormInput';
+
+import * as yup from 'yup';
+
+import {useForm} from 'react-hook-form';
+import {yupResolver} from '@hookform/resolvers/yup';
 
 import {selectBoardRequestProgress} from '../../store';
+import {BoardsRequestDto} from '../../types';
 
 const CreateBoardModal = () => {
-  const [board, setBoard] = useState('');
   const isLoading = useSelector(selectBoardRequestProgress);
 
   const isCreateBoardModalVisible = useSelector(
     selectCreateBoardModalVisibility,
   );
 
-  const addNewBoard = () => {
-    dispatch(requestAddBoard({title: board, description: ''}));
+  const {handleSubmit, control, reset} = useForm<BoardsRequestDto>({
+    defaultValues: {
+      title: '',
+      description: '',
+    },
+
+    resolver: yupResolver(schema),
+    mode: 'onChange',
+  });
+
+  const addNewBoard = handleSubmit(data => {
+    dispatch(requestAddBoard(data));
+
     if (isLoading === Statuses.SUCCEEDED) {
       dispatch(toggleCreateBoardModal());
-      setBoard('');
+      reset();
     }
-  };
+  });
 
   const dispatch = useAppDispatch();
   return (
@@ -40,23 +55,19 @@ const CreateBoardModal = () => {
           onRequestClose={() => {
             dispatch(toggleCreateBoardModal());
           }}>
-          <TouchableOpacity
-            style={styles.centeredView}
-            activeOpacity={1}
-            onPress={() => {
-              dispatch(toggleCreateBoardModal());
-            }}>
+          <TouchableOpacity style={styles.centeredView} activeOpacity={1}>
             <View style={styles.modalView}>
-              <Input
+              <FormInput
                 placeholder="Type a new board name..."
-                value={board}
-                onChangeText={text => setBoard(text)}
+                name="title"
+                control={control}
               />
               <PrimaryButton
                 onPress={addNewBoard}
                 title="Add Board"
                 isLoading={isLoading === Statuses.PENDING}
               />
+              <Text>{isLoading}</Text>
             </View>
           </TouchableOpacity>
         </Modal>
@@ -64,6 +75,10 @@ const CreateBoardModal = () => {
     </View>
   );
 };
+
+const schema = yup.object().shape({
+  title: yup.string().min(3, 'Title of board should be at least 2 characters'),
+});
 
 const styles = StyleSheet.create({
   centeredView: {

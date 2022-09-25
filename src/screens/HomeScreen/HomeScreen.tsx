@@ -14,6 +14,7 @@ import {selectBoards} from '../../store';
 import {requestGetBoards} from '../../store';
 import {BoardsList, CreateBoardModal} from '../../components';
 import {RouteProp} from '@react-navigation/core';
+import {Text} from 'react-native';
 
 const HomeScreen = () => {
   const dispatch = useAppDispatch();
@@ -21,12 +22,12 @@ const HomeScreen = () => {
 
   useEffect(() => {
     dispatch(requestGetBoards());
-    console.log('DISPATCH');
   }, [dispatch]);
 
   return (
     <View>
-      <BoardsList boards={boards} />
+      {boards && <BoardsList boards={boards} />}
+      {boards.length === 0 && <Text>no boards bro</Text>}
       <CreateBoardModal />
     </View>
   );

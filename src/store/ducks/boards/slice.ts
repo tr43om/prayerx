@@ -21,14 +21,14 @@ const {actions, reducer} = createSlice({
   initialState,
   reducers: {
     requestGetBoards: state => {
-      state.requestProgress = Statuses.PENDING;
+      //   state.requestProgress = Statuses.PENDING;
     },
     getBoardsFulfilled: (
       state,
       {payload}: PayloadAction<BoardsResponseDto[]>,
     ) => {
       state.boards = payload.reverse();
-      state.requestProgress = Statuses.SUCCEEDED;
+      //   state.requestProgress = Statuses.SUCCEEDED;
       state.error = false;
     },
     getBoardsRejected: (state, {payload}) => {

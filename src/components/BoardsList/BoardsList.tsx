@@ -10,7 +10,7 @@ const BoardsList = ({boards}: BoardsListProps) => {
       <FlatList
         data={boards}
         keyExtractor={item => item.id + ''}
-        renderItem={({item}) => <BoardCard title={item.title} />}
+        renderItem={({item}) => <BoardCard title={item.title} id={item.id} />}
         ItemSeparatorComponent={() => <View style={{margin: 10}} />}
       />
     </View>

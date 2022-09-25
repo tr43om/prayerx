@@ -24,7 +24,7 @@ import {BoardsResponseDto} from '../../../types';
 function* fetchGetBoards(): Generator<CallEffect | PutEffect, void, any> {
   try {
     const data: BoardsResponseDto[] = yield call(BoardsAPI.get);
-    console.log(data);
+
     yield put(getBoardsFulfilled(data));
   } catch (error) {
     yield put(getBoardsRejected(error));
@@ -40,7 +40,6 @@ function* fetchAddBoard({
 > {
   try {
     const data: BoardsResponseDto = yield call(BoardsAPI.add, payload);
-    console.log(data);
 
     yield put(addBoardFulfilled(data));
   } catch (error) {
