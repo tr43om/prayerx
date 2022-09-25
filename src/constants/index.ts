@@ -8,6 +8,8 @@ export enum Routes {
   home = 'Home',
   board = 'Board',
   prayer = 'Prayer',
+  prayers = 'Prayers',
+  subscriptions = 'Subscriptions',
 }
 
 export enum Statuses {

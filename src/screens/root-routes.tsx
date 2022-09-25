@@ -1,5 +1,5 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-
+import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 export type RootStackParams = {
   Home: undefined;
   SignIn: undefined;
@@ -7,6 +7,16 @@ export type RootStackParams = {
   Board: {name: string};
   Prayer: undefined;
 };
+
+export type TabsParams = {
+  Prayers: undefined;
+  Subscriptions: undefined;
+};
+
+export const Tabs = createMaterialTopTabNavigator<TabsParams>();
+
+export const PrayersTab = createMaterialTopTabNavigator<TabsParams>();
+export const SubscriptionsTab = createMaterialTopTabNavigator<TabsParams>();
 
 export const RootStack = createNativeStackNavigator<RootStackParams>();
 
