@@ -15,6 +15,7 @@
   "dependencies": {
     "@hookform/resolvers": "^2.9.8",
     "@react-native-async-storage/async-storage": "^1.17.10",
+    "@react-native-community/checkbox": "^0.5.12",
     "@react-navigation/material-top-tabs": "^6.2.4",
     "@react-navigation/native": "^6.0.13",
     "@react-navigation/native-stack": "^6.9.0",
@@ -28,6 +29,7 @@
     "react-devtools": "^4.25.0",
     "react-hook-form": "^7.35.0",
     "react-native": "0.70.0",
+    "react-native-bouncy-checkbox": "^3.0.4",
     "react-native-flipper": "^0.164.0",
     "react-native-gesture-handler": "^2.6.2",
     "react-native-mmkv": "^2.4.3",
