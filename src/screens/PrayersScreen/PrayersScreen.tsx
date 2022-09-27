@@ -1,4 +1,4 @@
-import {View, Text} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 
 import * as yup from 'yup';
 import React from 'react';
@@ -7,38 +7,34 @@ import {useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 
 import {useEffect} from 'react';
-import {requestAddPrayer, useAppDispatch} from '../../store';
+import {requestAddPrayer, selectPrayersById, useAppDispatch} from '../../store';
 import {useSelector} from 'react-redux';
 import {requestGetPrayers} from '../../store';
 import {PrayersList} from '../../components/PrayersList ';
-import {RootState} from '../../store';
-import {selectPrayersById} from '../../store';
+
 import {PrayersRequestDto} from '../../types';
-import {FormInput} from '../../components';
+import {FormInput, PrimaryButton} from '../../components';
 import {selectPrayers} from '../../store';
+import {selectPrayerRequestProgress} from '../../store';
 import {useMemo} from 'react';
+import {RootState} from '../../store/store';
+import {toggleShowAnsweredPrayersList} from '../../store';
+import {selectAnsweredPrayersVisibility} from '../../store/ducks/prayers/selectors';
 
 const PrayersScreen = ({boardId}: PrayersScreenProps) => {
   const dispatch = useAppDispatch();
-  const prayers = useSelector(selectPrayers);
+  const prayers = useSelector((state: RootState) =>
+    selectPrayersById(state, boardId),
+  );
 
-  // const currentPrayers = useMemo(
-  //   () => prayers.filter(prayer => prayer.columnId === boardId),
-  //   [prayers, boardId],
-  // );
+  const unAnsweredPrayers = prayers.filter(prayer => prayer.checked === false);
 
-  const currentPrayers = prayers.filter(prayer => prayer.columnId === boardId);
+  const answeredPrayers = prayers.filter(prayer => prayer.checked === true);
+  const isAnsweredPrayersVisible = useSelector(selectAnsweredPrayersVisibility);
 
-  // const prayers = useSelector((state: RootState) =>
-  //   selectPrayersById(state, boardId),
-  // );
+  const isLoading = useSelector(selectPrayerRequestProgress);
 
-  const {
-    handleSubmit,
-    control,
-    reset,
-    formState: {isSubmitSuccessful},
-  } = useForm<PrayersRequestDto>({
+  const {handleSubmit, control, reset} = useForm<PrayersRequestDto>({
     defaultValues: {
       title: '',
       description: '',
@@ -60,6 +56,10 @@ const PrayersScreen = ({boardId}: PrayersScreenProps) => {
     reset();
   });
 
+  const showAnsweredPrayers = () => {
+    dispatch(toggleShowAnsweredPrayersList());
+  };
+
   return (
     <View>
       <FormInput
@@ -67,9 +67,26 @@ const PrayersScreen = ({boardId}: PrayersScreenProps) => {
         name="title"
         control={control}
         onSubmitEditing={addNewPrayer}
+        isLoading={isLoading}
       />
-      {currentPrayers.length !== 0 ? (
-        <PrayersList prayers={currentPrayers} />
+      {prayers.length !== 0 ? (
+        <>
+          <PrayersList prayers={unAnsweredPrayers} />
+          <PrimaryButton
+            title={
+              isAnsweredPrayersVisible
+                ? 'Hide answered prayers'
+                : 'Show answered prayers'
+            }
+            onPress={showAnsweredPrayers}
+          />
+          {isAnsweredPrayersVisible && (
+            <PrayersList
+              prayers={answeredPrayers}
+              listStyles={styles.answeredPrayers}
+            />
+          )}
+        </>
       ) : (
         <Text>No prayers bro </Text>
       )}
@@ -79,6 +96,12 @@ const PrayersScreen = ({boardId}: PrayersScreenProps) => {
 
 const schema = yup.object().shape({
   title: yup.string().min(3, 'Title of prayer should be at least 2 characters'),
+});
+
+const styles = StyleSheet.create({
+  answeredPrayers: {
+    marginTop: 30,
+  },
 });
 
 type PrayersScreenProps = {

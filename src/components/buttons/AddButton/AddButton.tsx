@@ -1,8 +1,8 @@
 import {View, Text, TouchableOpacity} from 'react-native';
 import React from 'react';
-import {IconAdd} from '../../assets';
-import {useAppDispatch} from '../../store';
-import {toggleCreateBoardModal} from '../../store';
+import {IconAdd} from '../../../assets';
+import {useAppDispatch} from '../../../store';
+import {toggleCreateBoardModal} from '../../../store';
 
 const AddButton = () => {
   const dispatch = useAppDispatch();

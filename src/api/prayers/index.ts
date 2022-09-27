@@ -24,14 +24,8 @@ const PrayersApi = {
     return data;
   },
 
-  update: async ({
-    title,
-    description,
-    checked,
-    columnId,
-    id,
-  }: PrayersUpdateDto) => {
-    await api.put(`prayers/${id}`, {title, description, checked, columnId});
+  update: async ({data, id}: PrayersUpdateDto) => {
+    await api.put(`prayers/${id}`, data);
   },
 
   delete: async ({id}: {id: number}) => {

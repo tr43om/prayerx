@@ -41,10 +41,7 @@ const CreateBoardModal = () => {
   const addNewBoard = handleSubmit(data => {
     dispatch(requestAddBoard(data));
 
-    if (isLoading === Statuses.SUCCEEDED) {
-      dispatch(toggleCreateBoardModal());
-      reset();
-    }
+    reset();
   });
 
   return (

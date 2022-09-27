@@ -9,9 +9,13 @@ import {
   Path,
 } from 'react-hook-form';
 
+import {StyleSheet} from 'react-native';
+
 // components
 import {Input} from '../ui';
 import {Text, TextInputProps, View} from 'react-native';
+import {TextInput} from 'react-native-gesture-handler';
+import {theme} from '../../styles';
 
 const FormInput = <TFormValues extends FieldValues>(
   props: FormInputProps<TFormValues>,
@@ -24,17 +28,29 @@ const FormInput = <TFormValues extends FieldValues>(
   const errorMessage = errors[props.name]?.message?.toString();
 
   return (
-    <FieldContainer>
-      <Input
-        placeholder={props.placeholder || 'Type a new value...'}
-        onChangeText={onChange}
-        value={value}
-        autoCapitalize="none"
-        autoCorrect={false}
-        {...props}
-      />
-      {errors[props.name]?.message && <Text>{errorMessage}</Text>}
-    </FieldContainer>
+    <View style={styles.container}>
+      {props.textInput ? (
+        <TextInput
+          placeholder={props.placeholder || 'Type a new value...'}
+          onChangeText={onChange}
+          value={value}
+          style={styles.textInput}
+          {...props}
+        />
+      ) : (
+        <>
+          <Input
+            placeholder={props.placeholder || 'Type a new value...'}
+            onChangeText={onChange}
+            value={value}
+            autoCapitalize="none"
+            autoCorrect={false}
+            {...props}
+          />
+          {errors[props.name]?.message && <Text>{errorMessage}</Text>}
+        </>
+      )}
+    </View>
   );
 };
 
@@ -43,10 +59,24 @@ interface FormInputProps<TFormValues extends FieldValues>
     Omit<TextInputProps, 'defaultValue'> {
   button?: ReactNode;
   name: Path<TFormValues>;
+  isLoading?: string;
+  textInput?: boolean;
 }
 
-const FieldContainer = styled(View)`
-  width: 100%;
-`;
+const styles = StyleSheet.create({
+  container: {
+    width: '100%',
+  },
+
+  textInput: {
+    width: '50%',
+    marginLeft: 17,
+    fontSize: 14,
+    color: theme.colors.text,
+    borderBottomColor: theme.colors.border,
+    paddingBottom: 5,
+    borderBottomWidth: 1,
+  },
+});
 
 export default FormInput;

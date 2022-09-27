@@ -46,6 +46,7 @@ const {actions, reducer} = createSlice({
       state.boards = [payload, ...state.boards];
       state.requestProgress = Statuses.SUCCEEDED;
       state.error = false;
+      state.creatingNewBoard = false;
     },
     addBoardRejected: (state, {payload}) => {
       state.error = payload;

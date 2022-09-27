@@ -1,5 +1,5 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {PrayersResponseDto} from '../../../types';
+import {PrayersResponseDto, PrayersUpdateDto} from '../../../types';
 import {Statuses} from '../../../constants';
 import {PrayersRequestDto} from '../../../types/models/PrayersRequestDto';
 
@@ -7,14 +7,14 @@ const initialState: PrayersSliceType = {
   prayers: [],
   requestProgress: Statuses.IDLE,
   error: false,
-  creatingNewPrayer: true,
+  showAnsweredPrayersList: false,
 };
 
 type PrayersSliceType = {
   prayers: PrayersResponseDto[];
   requestProgress: Statuses;
   error: boolean;
-  creatingNewPrayer: boolean;
+  showAnsweredPrayersList: boolean;
 };
 
 const {actions, reducer} = createSlice({
@@ -28,7 +28,7 @@ const {actions, reducer} = createSlice({
       state,
       {payload}: PayloadAction<PrayersResponseDto[]>,
     ) => {
-      state.prayers = payload.reverse();
+      state.prayers = payload;
       state.requestProgress = Statuses.SUCCEEDED;
       state.error = false;
     },
@@ -44,17 +44,13 @@ const {actions, reducer} = createSlice({
       state,
       {payload}: PayloadAction<PrayersResponseDto>,
     ) => {
-      state.prayers = [payload, ...state.prayers];
+      state.prayers.push(payload);
       state.requestProgress = Statuses.SUCCEEDED;
       state.error = false;
     },
     addPrayerRejected: (state, {payload}) => {
       state.error = payload;
       state.requestProgress = Statuses.FAILED;
-    },
-
-    toggleCreatePrayerModal: state => {
-      state.creatingNewPrayer = !state.creatingNewPrayer;
     },
 
     requestDeletePrayer: (state, {payload}: PayloadAction<number>) => {
@@ -69,6 +65,40 @@ const {actions, reducer} = createSlice({
       state.error = payload;
       state.requestProgress = Statuses.FAILED;
     },
+
+    requestUpdatePrayer: (
+      state,
+      {payload}: PayloadAction<PrayersUpdateDto>,
+    ) => {
+      state.requestProgress = Statuses.PENDING;
+    },
+    updatePrayerFulfilled: (
+      state,
+      {payload}: PayloadAction<PrayersUpdateDto>,
+    ) => {
+      // const prayer = state.prayers.find(item => item.id === payload.id);
+      // if (prayer) {
+      //   prayer.checked = payload.data.checked;
+      // }
+
+      state.prayers = state.prayers.map(prayer => {
+        if (payload.id === prayer.id) {
+          return payload.data;
+        }
+        return prayer;
+      });
+
+      state.requestProgress = Statuses.SUCCEEDED;
+      state.error = false;
+    },
+    updatePrayerRejected: (state, {payload}) => {
+      state.error = payload;
+      state.requestProgress = Statuses.FAILED;
+    },
+
+    toggleShowAnsweredPrayersList: state => {
+      state.showAnsweredPrayersList = !state.showAnsweredPrayersList;
+    },
   },
 });
 
@@ -82,6 +112,9 @@ export const {
   addPrayerRejected,
   deletePrayerFulfilled,
   deletePrayerRejected,
-  toggleCreatePrayerModal,
+  requestUpdatePrayer,
+  updatePrayerFulfilled,
+  updatePrayerRejected,
+  toggleShowAnsweredPrayersList,
 } = actions;
 export const prayersReducer = reducer;

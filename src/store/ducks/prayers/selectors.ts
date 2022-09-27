@@ -20,3 +20,8 @@ export const selectPrayersById = createSelector(
     return prayers.filter(prayer => prayer.columnId === subscriptionId);
   },
 );
+
+export const selectAnsweredPrayersVisibility = createSelector(
+  ({prayers: {showAnsweredPrayersList}}: RootState) => showAnsweredPrayersList,
+  showAnsweredPrayersList => showAnsweredPrayersList,
+);

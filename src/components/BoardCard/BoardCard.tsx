@@ -1,40 +1,38 @@
-import {Text, TouchableOpacity} from 'react-native';
-import React from 'react';
+import {Text, TouchableOpacity, TextInput} from 'react-native';
+import React, {useRef} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParams} from '../../screens';
 import {StyleSheet} from 'react-native';
-import {Swipeable} from 'react-native-gesture-handler';
-import Animated, {
-  Layout,
-  LightSpeedInRight,
-  StretchOutY,
-} from 'react-native-reanimated';
+
 import {theme} from '../../styles';
-import {useAppDispatch} from '../../store';
-import {requestDeleteBoard} from '../../store';
-import {DeleteButton} from '../DeleteButton';
+
+import {SwipeableContainer} from '../SwipeableContainer';
+import {DeleteButton, EditButton} from '../buttons';
+import {Swipeable} from 'react-native-gesture-handler';
+import {Routes} from '../../constants';
+import {requestDeleteBoard, useAppDispatch} from '../../store';
 
 const BoardCard = ({title, id}: BoardCardProps) => {
-  const dispatch = useAppDispatch();
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParams>>();
+  const dispatch = useAppDispatch();
+  const swipeRef = useRef<Swipeable>(null);
+  const rightActions = [
+    <DeleteButton onDelete={() => dispatch(requestDeleteBoard(id))} />,
+    <EditButton onEdit={() => swipeRef?.current?.close()} />,
+  ];
 
   return (
-    <Animated.View
-      layout={Layout.springify().duration(1000)}
-      entering={LightSpeedInRight.duration(500).springify()}
-      exiting={StretchOutY}>
-      <Swipeable
-        renderRightActions={() => <DeleteButton />}
-        onSwipeableOpen={() => dispatch(requestDeleteBoard(id))}>
-        <TouchableOpacity
-          style={[styles.container]}
-          onPress={() => navigation.navigate('Board', {name: title, id: id})}>
-          <Text style={styles.content}>{title}</Text>
-        </TouchableOpacity>
-      </Swipeable>
-    </Animated.View>
+    <SwipeableContainer rightActions={rightActions} swipeRef={swipeRef}>
+      <TouchableOpacity
+        style={[styles.container]}
+        onPress={() =>
+          navigation.navigate(Routes.board, {name: title, id: id})
+        }>
+        <Text style={styles.content}>{title}</Text>
+      </TouchableOpacity>
+    </SwipeableContainer>
   );
 };
 

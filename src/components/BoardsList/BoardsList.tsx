@@ -1,4 +1,4 @@
-import {View, Text} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 import {FlatList} from 'react-native';
 import React from 'react';
 import {BoardsResponseDto} from '../../types';
@@ -9,9 +9,9 @@ const BoardsList = ({boards}: BoardsListProps) => {
     <View>
       <FlatList
         data={boards}
-        keyExtractor={item => item.id + ''}
+        keyExtractor={item => item.id.toString()}
         renderItem={({item}) => <BoardCard title={item.title} id={item.id} />}
-        ItemSeparatorComponent={() => <View style={{margin: 10}} />}
+        ItemSeparatorComponent={() => <View style={styles.separator} />}
       />
     </View>
   );
@@ -20,4 +20,10 @@ const BoardsList = ({boards}: BoardsListProps) => {
 type BoardsListProps = {
   boards: BoardsResponseDto[];
 };
+
+const styles = StyleSheet.create({
+  separator: {
+    margin: 5,
+  },
+});
 export default BoardsList;

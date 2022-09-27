@@ -4,13 +4,15 @@ import {
   TextInputProps,
   StyleSheet,
   TouchableOpacity,
+  ActivityIndicator,
 } from 'react-native';
 import {TextInput} from 'react-native';
 import React from 'react';
 import {IconAdd} from '../../../assets';
 import {theme} from '../../../styles';
+import {Statuses} from '../../../constants';
 
-const Input = ({...props}: InputType) => {
+const Input = ({isLoading, ...props}: InputType) => {
   return (
     <View style={styles.container}>
       <TextInput
@@ -18,15 +20,18 @@ const Input = ({...props}: InputType) => {
         placeholderTextColor={theme.colors.placeholder}
         {...props}
       />
-
-      <TouchableOpacity style={styles.icon}>
-        <IconAdd width={22} height={22} />
-      </TouchableOpacity>
+      {isLoading === Statuses.PENDING ? (
+        <ActivityIndicator style={styles.icon} color={theme.colors.primary} />
+      ) : (
+        <IconAdd width={22} height={22} style={styles.icon} />
+      )}
     </View>
   );
 };
 
-interface InputType extends TextInputProps {}
+interface InputType extends TextInputProps {
+  isLoading?: string;
+}
 
 const styles = StyleSheet.create({
   container: {
