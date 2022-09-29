@@ -59,6 +59,7 @@ interface FormInputProps<TFormValues extends FieldValues>
   isLoading?: string;
   textInput?: boolean;
   icon?: ReactNode;
+  withoutIcon?: boolean;
 }
 
 const styles = StyleSheet.create({

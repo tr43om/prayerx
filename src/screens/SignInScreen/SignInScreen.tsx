@@ -1,4 +1,4 @@
-import {Button, View} from 'react-native';
+import {Button, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 
 import {FormInput} from '../../components';
@@ -12,8 +12,9 @@ import {AuthSignInDto, Routes} from '../../types';
 
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParams} from '../root-routes';
+import {theme} from '../../styles';
 
-const SignInScreen: React.FC<SignInScreenProps> = () => {
+const SignInScreen: React.FC<SignInScreenProps> = ({navigation}) => {
   const dispatch = useAppDispatch();
 
   const {handleSubmit, control, reset} = useForm<AuthSignInDto>({
@@ -38,18 +39,36 @@ const SignInScreen: React.FC<SignInScreenProps> = () => {
         keyboardType="email-address"
         name="email"
         control={control}
+        withoutIcon
       />
       <FormInput
         placeholder="Password"
         secureTextEntry={true}
         name="password"
         control={control}
+        withoutIcon
       />
 
       <Button title="Sign In" onPress={handleSignIn} />
+      <Text
+        style={styles.redirectText}
+        onPress={() => navigation.navigate(Routes.signup)}>
+        or Create new account
+      </Text>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  redirectText: {
+    color: theme.colors.primary,
+    fontWeight: '500',
+    fontSize: 15,
+    marginTop: 15,
+
+    textAlign: 'center',
+  },
+});
 
 const schema = yup.object().shape({
   email: yup

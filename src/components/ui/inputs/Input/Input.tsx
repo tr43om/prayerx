@@ -10,18 +10,18 @@ import {IconAdd} from '../../../../assets';
 import {theme} from '../../../../styles';
 import {Statuses} from '../../../../types';
 
-const Input = ({isLoading, ...props}: InputType) => {
+const Input = ({isLoading, withoutIcon, ...props}: InputType) => {
   return (
     <View style={styles.container}>
       <TextInput
-        style={styles.input}
+        style={[styles.input, !withoutIcon && styles.inputWithIcon]}
         placeholderTextColor={theme.colors.placeholder}
         {...props}
       />
       {isLoading === Statuses.PENDING ? (
         <ActivityIndicator style={styles.icon} color={theme.colors.primary} />
       ) : (
-        <IconAdd width={22} height={22} style={styles.icon} />
+        !withoutIcon && <IconAdd width={22} height={22} style={styles.icon} />
       )}
     </View>
   );
@@ -29,6 +29,7 @@ const Input = ({isLoading, ...props}: InputType) => {
 
 interface InputType extends TextInputProps {
   isLoading?: string;
+  withoutIcon?: boolean;
 }
 
 const styles = StyleSheet.create({
@@ -43,10 +44,14 @@ const styles = StyleSheet.create({
     borderColor: theme.colors.border,
     fontSize: 17,
     padding: 15,
-    paddingLeft: 50,
     marginBottom: 20,
     borderRadius: 4,
   },
+
+  inputWithIcon: {
+    paddingLeft: 50,
+  },
+
   icon: {
     position: 'absolute',
     top: 14,
