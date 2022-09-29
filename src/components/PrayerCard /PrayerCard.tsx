@@ -62,9 +62,7 @@ const PrayerCard = ({prayer}: PrayerCardProps) => {
       title,
     };
 
-    const values = dispatch(
-      requestUpdatePrayer({id: prayer.id, data: updatedPrayer}),
-    );
+    dispatch(requestUpdatePrayer({id: prayer.id, data: updatedPrayer}));
 
     setIsEditingTitle(false);
   });
@@ -83,7 +81,7 @@ const PrayerCard = ({prayer}: PrayerCardProps) => {
     <SwipeableContainer rightActions={rightActions} swipeRef={swipeableRef}>
       <Pressable
         style={[styles.container]}
-        onPress={() => navigation.navigate(Routes.prayer)}>
+        onPress={() => navigation.navigate(Routes.prayer, {id: prayer.id})}>
         <BouncyCheckbox
           size={22}
           fillColor={theme.colors.primary}
@@ -101,6 +99,7 @@ const PrayerCard = ({prayer}: PrayerCardProps) => {
                 onSubmitEditing={updatePrayerTitle}
                 textInput
                 autoFocus
+                style={styles.input}
               />
             )
           }
@@ -175,6 +174,10 @@ const styles = StyleSheet.create({
 
   checkboxInnerIconStyle: {
     borderRadius: 4,
+  },
+
+  input: {
+    marginLeft: 17,
   },
 });
 

@@ -8,9 +8,9 @@ import {
 } from 'react-native';
 import {TextInput} from 'react-native';
 import React from 'react';
-import {IconAdd} from '../../../assets';
-import {theme} from '../../../styles';
-import {Statuses} from '../../../constants';
+import {IconAdd} from '../../../../assets';
+import {theme} from '../../../../styles';
+import {Statuses} from '../../../../constants';
 
 const Input = ({isLoading, ...props}: InputType) => {
   return (

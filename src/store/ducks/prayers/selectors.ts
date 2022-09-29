@@ -12,12 +12,21 @@ export const selectPrayerRequestProgress = createSelector(
   requestProgress => requestProgress,
 );
 
-const selectId = (state: RootState, columnId: number) => columnId;
+const selectIdForPrayers = (state: RootState, columnId: number) => columnId;
 
 export const selectPrayersById = createSelector(
-  [selectPrayers, selectId],
-  (prayers: PrayersResponseDto[], subscriptionId) => {
-    return prayers.filter(prayer => prayer.columnId === subscriptionId);
+  [selectPrayers, selectIdForPrayers],
+  (prayers: PrayersResponseDto[], prayerId) => {
+    return prayers.filter(prayer => prayer.columnId === prayerId);
+  },
+);
+
+const selectIdForPrayer = (state: RootState, prayerId: number) => prayerId;
+
+export const selectPrayerById = createSelector(
+  [selectPrayers, selectIdForPrayer],
+  (prayers: PrayersResponseDto[], prayerId) => {
+    return prayers.filter(prayer => prayer.id === prayerId)[0];
   },
 );
 

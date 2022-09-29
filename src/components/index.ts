@@ -6,4 +6,8 @@ export * from './ActionsList';
 export * from './buttons';
 export * from './BarBadge';
 export * from './CreateBoardModal';
+export * from './PrayerHeader';
 export * from './SwipeableContainer';
+export * from './PrayerStatsTable';
+export * from './MembersList';
+export * from './CommentsSection';

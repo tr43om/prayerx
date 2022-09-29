@@ -6,14 +6,14 @@ import {PrayersRequestDto} from '../../../types/models/PrayersRequestDto';
 const initialState: PrayersSliceType = {
   prayers: [],
   requestProgress: Statuses.IDLE,
-  error: false,
+  // error: false,
   showAnsweredPrayersList: false,
 };
 
 type PrayersSliceType = {
   prayers: PrayersResponseDto[];
   requestProgress: Statuses;
-  error: boolean;
+  // error: boolean;
   showAnsweredPrayersList: boolean;
 };
 
@@ -30,10 +30,10 @@ const {actions, reducer} = createSlice({
     ) => {
       state.prayers = payload;
       state.requestProgress = Statuses.SUCCEEDED;
-      state.error = false;
+      // state.error = false;
     },
     getPrayersRejected: (state, {payload}) => {
-      state.error = payload;
+      // state.error = payload && true;
       state.requestProgress = Statuses.FAILED;
     },
 
@@ -46,10 +46,10 @@ const {actions, reducer} = createSlice({
     ) => {
       state.prayers.push(payload);
       state.requestProgress = Statuses.SUCCEEDED;
-      state.error = false;
+      // state.error = false;
     },
     addPrayerRejected: (state, {payload}) => {
-      state.error = payload;
+      // state.error = payload;
       state.requestProgress = Statuses.FAILED;
     },
 
@@ -59,10 +59,10 @@ const {actions, reducer} = createSlice({
     deletePrayerFulfilled: (state, {payload}: PayloadAction<number>) => {
       state.prayers = state.prayers.filter(prayer => prayer.id !== payload);
       state.requestProgress = Statuses.SUCCEEDED;
-      state.error = false;
+      // state.error = false;
     },
     deletePrayerRejected: (state, {payload}) => {
-      state.error = payload;
+      // state.error = payload;
       state.requestProgress = Statuses.FAILED;
     },
 
@@ -76,11 +76,6 @@ const {actions, reducer} = createSlice({
       state,
       {payload}: PayloadAction<PrayersUpdateDto>,
     ) => {
-      // const prayer = state.prayers.find(item => item.id === payload.id);
-      // if (prayer) {
-      //   prayer.checked = payload.data.checked;
-      // }
-
       state.prayers = state.prayers.map(prayer => {
         if (payload.id === prayer.id) {
           return payload.data;
@@ -89,10 +84,10 @@ const {actions, reducer} = createSlice({
       });
 
       state.requestProgress = Statuses.SUCCEEDED;
-      state.error = false;
+      // state.error = false;
     },
     updatePrayerRejected: (state, {payload}) => {
-      state.error = payload;
+      // state.error = payload;
       state.requestProgress = Statuses.FAILED;
     },
 

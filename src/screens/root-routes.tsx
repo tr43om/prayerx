@@ -5,7 +5,7 @@ export type RootStackParams = {
   SignIn: undefined;
   SignUp: undefined;
   Board: {name: string; id: number};
-  Prayer: undefined;
+  Prayer: {id: number};
 };
 
 export type TabsParams = {

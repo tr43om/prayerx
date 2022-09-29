@@ -74,7 +74,6 @@ function* fetchUpdatePrayer({
   try {
     yield call(PrayersAPI.update, {id: payload.id, data: payload.data});
     yield put(updatePrayerFulfilled(payload));
-    console.log('SUUCCCCESSS');
   } catch (error) {
     yield put(updatePrayerRejected(error));
   }

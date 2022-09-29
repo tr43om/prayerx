@@ -40,6 +40,7 @@ const PrayersScreen = ({boardId}: PrayersScreenProps) => {
       description: '',
       checked: false,
       columnId: boardId,
+      createdAt: new Date(),
     },
 
     resolver: yupResolver(schema),

@@ -11,3 +11,4 @@ export {default as IconUser1} from './User1';
 export {default as IconUserPlus} from './UserPlus';
 export {default as IconUser} from './User';
 export {default as IconSettings} from './Settings';
+export {default as IconMessage} from './Message';

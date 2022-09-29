@@ -7,10 +7,11 @@ import {
 } from '../../types';
 
 const PrayersApi = {
-  get: async () => {
-    const data = await api.get<PrayersResponseDto[]>('prayers');
-
-    return data;
+  get: async (id?: number) => {
+    if (id) {
+      return await api.get<PrayersResponseDto>(`prayers/${id}`);
+    }
+    return await api.get<PrayersResponseDto[]>('prayers');
   },
 
   add: async ({title, description, checked, columnId}: PrayersRequestDto) => {

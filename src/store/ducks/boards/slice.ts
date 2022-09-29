@@ -5,14 +5,14 @@ import {Statuses} from '../../../constants';
 const initialState: BoardsSliceType = {
   boards: [],
   requestProgress: Statuses.IDLE,
-  error: false,
+
   creatingNewBoard: true,
 };
 
 type BoardsSliceType = {
   boards: BoardsResponseDto[];
   requestProgress: Statuses;
-  error: boolean;
+
   creatingNewBoard: boolean;
 };
 
@@ -29,10 +29,10 @@ const {actions, reducer} = createSlice({
     ) => {
       state.boards = payload.reverse();
       //   state.requestProgress = Statuses.SUCCEEDED;
-      state.error = false;
+      // state.error = false;
     },
     getBoardsRejected: (state, {payload}) => {
-      state.error = payload;
+      // state.error = payload;
       state.requestProgress = Statuses.FAILED;
     },
 
@@ -45,11 +45,11 @@ const {actions, reducer} = createSlice({
     addBoardFulfilled: (state, {payload}: PayloadAction<BoardsResponseDto>) => {
       state.boards = [payload, ...state.boards];
       state.requestProgress = Statuses.SUCCEEDED;
-      state.error = false;
+      // state.error = false;
       state.creatingNewBoard = false;
     },
     addBoardRejected: (state, {payload}) => {
-      state.error = payload;
+      // state.error = payload;
       state.requestProgress = Statuses.FAILED;
     },
 
@@ -63,10 +63,10 @@ const {actions, reducer} = createSlice({
     deleteBoardFulfilled: (state, {payload}: PayloadAction<number>) => {
       state.boards = state.boards.filter(board => board.id !== payload);
       state.requestProgress = Statuses.SUCCEEDED;
-      state.error = false;
+      // state.error = false;
     },
     deleteBoardRejected: (state, {payload}) => {
-      state.error = payload;
+      // state.error = payload;
       state.requestProgress = Statuses.FAILED;
     },
   },

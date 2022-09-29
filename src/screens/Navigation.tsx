@@ -19,8 +19,11 @@ import {useSelector} from 'react-redux';
 import {selectAuthRequestProgress} from '../store';
 import {AddButton} from '../components';
 import {theme} from '../styles';
-import {IconSettings} from '../assets';
+import {IconBack, IconPrayerLine, IconSettings} from '../assets';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import {SafeAreaView, Text, View} from 'react-native';
+import {HeaderButtonProps} from '@react-navigation/native-stack/lib/typescript/src/types';
+import {PrayerHeader} from '../components';
 
 const Navigation = () => {
   const isAuthenticated = useSelector(selectAuthRequestProgress);
@@ -56,7 +59,25 @@ const Navigation = () => {
                 ),
               })}
             />
-            <PrayerStack.Screen name={Routes.prayer} component={PrayerScreen} />
+            <PrayerStack.Screen
+              name={Routes.prayer}
+              component={PrayerScreen}
+              options={{
+                header(props) {
+                  return <PrayerHeader headerProps={props} />;
+                },
+
+                contentStyle: {
+                  padding: 15,
+                },
+
+                headerRight: props => (
+                  <TouchableOpacity>
+                    <IconPrayerLine width={29} height={22} />
+                  </TouchableOpacity>
+                ),
+              }}
+            />
           </>
         ) : (
           <>

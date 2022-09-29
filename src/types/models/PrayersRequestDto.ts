@@ -7,4 +7,5 @@ export type PrayersRequestDto = {
   description: string;
   checked: boolean;
   columnId: number;
+  createdAt: Date;
 };

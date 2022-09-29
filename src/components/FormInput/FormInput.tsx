@@ -12,7 +12,7 @@ import {
 import {StyleSheet} from 'react-native';
 
 // components
-import {Input} from '../ui';
+import {Input, TextField} from '../ui';
 import {Text, TextInputProps, View} from 'react-native';
 import {TextInput} from 'react-native-gesture-handler';
 import {theme} from '../../styles';
@@ -30,11 +30,10 @@ const FormInput = <TFormValues extends FieldValues>(
   return (
     <View style={styles.container}>
       {props.textInput ? (
-        <TextInput
+        <TextField
           placeholder={props.placeholder || 'Type a new value...'}
           onChangeText={onChange}
           value={value}
-          style={styles.textInput}
           {...props}
         />
       ) : (
@@ -61,6 +60,7 @@ interface FormInputProps<TFormValues extends FieldValues>
   name: Path<TFormValues>;
   isLoading?: string;
   textInput?: boolean;
+  icon?: ReactNode;
 }
 
 const styles = StyleSheet.create({
