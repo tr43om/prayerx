@@ -1,7 +1,10 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {PrayersResponseDto, PrayersUpdateDto} from '../../../types';
-import {Statuses} from '../../../constants';
-import {PrayersRequestDto} from '../../../types/models/PrayersRequestDto';
+import {
+  PrayersResponseDto,
+  PrayersUpdateDto,
+  PrayersRequestDto,
+  Statuses,
+} from '../../../types';
 
 const initialState: PrayersSliceType = {
   prayers: [],

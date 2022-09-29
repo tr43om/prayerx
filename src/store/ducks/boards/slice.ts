@@ -1,6 +1,5 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {BoardsResponseDto} from '../../../types';
-import {Statuses} from '../../../constants';
+import {BoardsResponseDto, Statuses} from '../../../types';
 
 const initialState: BoardsSliceType = {
   boards: [],

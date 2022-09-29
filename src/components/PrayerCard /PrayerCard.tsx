@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 
 import {useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
-import {View, Text, Pressable, StyleSheet, TextInput} from 'react-native';
+import {View, Text, Pressable, StyleSheet} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParams} from '../../screens';
@@ -17,10 +17,10 @@ import {
 
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import {IconPrayer, IconUser} from '../../assets';
-import {Routes} from '../../constants';
-import {PrayersResponseDto} from '../../types';
 
-import {SwipeableContainer} from '../SwipeableContainer';
+import {PrayersResponseDto, Routes} from '../../types';
+
+import {SwipeableContainer} from '../swipeable/SwipeableContainer';
 import {DeleteButton, EditButton} from '../buttons';
 import {Swipeable} from 'react-native-gesture-handler';
 import {useRef} from 'react';
@@ -32,7 +32,6 @@ const PrayerCard = ({prayer}: PrayerCardProps) => {
   const {
     handleSubmit,
     control,
-    reset,
     formState: {errors},
   } = useForm({
     defaultValues: {

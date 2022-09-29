@@ -11,14 +11,12 @@ import {
   toggleCreateBoardModal,
   requestAddBoard,
   selectBoardRequestProgress,
+  useAppDispatch,
 } from '../../store';
-import {useAppDispatch} from '../../store/store';
 
 import {useSelector} from 'react-redux';
 import {PrimaryButton} from '../ui';
-import {Statuses} from '../../constants';
-
-import {BoardsRequestDto} from '../../types';
+import {Statuses, BoardsRequestDto} from '../../types';
 
 const CreateBoardModal = () => {
   const dispatch = useAppDispatch();

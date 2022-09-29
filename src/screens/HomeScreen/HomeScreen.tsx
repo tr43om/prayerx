@@ -1,19 +1,16 @@
-import {View} from 'react-native';
-import React from 'react';
+import React, {useEffect} from 'react';
+import {View, Text} from 'react-native';
 
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 import {RootStackParams} from '../root-routes';
 
-import {useEffect} from 'react';
-import {useAppDispatch} from '../../store';
+import {useAppDispatch, selectBoards, requestGetBoards} from '../../store';
 import {useSelector} from 'react-redux';
-import {selectBoards} from '../../store';
-import {requestGetBoards} from '../../store';
+
 import {BoardsList, CreateBoardModal} from '../../components';
 import {RouteProp} from '@react-navigation/core';
-import {Text} from 'react-native';
-import {Routes} from '../../constants';
+import {Routes} from '../../types';
 
 const HomeScreen: React.FC<HomeScreenProps> = () => {
   const dispatch = useAppDispatch();

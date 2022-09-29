@@ -1,4 +1,4 @@
-import {Button, Text, View} from 'react-native';
+import {Button, View} from 'react-native';
 import React from 'react';
 
 import {FormInput} from '../../components';
@@ -7,13 +7,11 @@ import * as yup from 'yup';
 
 import {useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
-import {requestSignIn} from '../../store';
-import {useAppDispatch} from '../../store';
-import {AuthSignInDto} from '../../types';
+import {requestSignIn, useAppDispatch} from '../../store';
+import {AuthSignInDto, Routes} from '../../types';
 
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParams} from '../root-routes';
-import {Routes} from '../../constants';
 
 const SignInScreen: React.FC<SignInScreenProps> = () => {
   const dispatch = useAppDispatch();

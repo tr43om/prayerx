@@ -1,5 +1,7 @@
-import styled from 'styled-components';
-import React, {ReactNode, InputHTMLAttributes} from 'react';
+import React, {ReactNode} from 'react';
+
+import {StyleSheet} from 'react-native';
+import {theme} from '../../styles';
 
 // react-hook-form
 import {
@@ -9,13 +11,9 @@ import {
   Path,
 } from 'react-hook-form';
 
-import {StyleSheet} from 'react-native';
-
 // components
 import {Input, TextField} from '../ui';
 import {Text, TextInputProps, View} from 'react-native';
-import {TextInput} from 'react-native-gesture-handler';
-import {theme} from '../../styles';
 
 const FormInput = <TFormValues extends FieldValues>(
   props: FormInputProps<TFormValues>,

@@ -14,16 +14,13 @@ import {
 
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import {Routes, Statuses} from '../constants';
+import {Routes, Statuses} from '../types';
 import {useSelector} from 'react-redux';
 import {selectAuthRequestProgress} from '../store';
-import {AddButton} from '../components';
+import {AddButton, PrayerHeader} from '../components';
 import {theme} from '../styles';
-import {IconBack, IconPrayerLine, IconSettings} from '../assets';
+import {IconPrayerLine, IconSettings} from '../assets';
 import {TouchableOpacity} from 'react-native-gesture-handler';
-import {SafeAreaView, Text, View} from 'react-native';
-import {HeaderButtonProps} from '@react-navigation/native-stack/lib/typescript/src/types';
-import {PrayerHeader} from '../components';
 
 const Navigation = () => {
   const isAuthenticated = useSelector(selectAuthRequestProgress);

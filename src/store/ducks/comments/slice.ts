@@ -3,8 +3,8 @@ import {
   CommentsRequestDto,
   CommentsResponseDto,
   CommentsUpdateDto,
+  Statuses,
 } from '../../../types';
-import {Statuses} from '../../../constants';
 
 const initialState: CommentsSliceType = {
   comments: [],

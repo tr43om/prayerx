@@ -1,16 +1,14 @@
-import {Text, TouchableOpacity, TextInput} from 'react-native';
 import React, {useRef} from 'react';
+import {Text, TouchableOpacity, StyleSheet} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {RootStackParams} from '../../screens';
-import {StyleSheet} from 'react-native';
-
-import {theme} from '../../styles';
-
-import {SwipeableContainer} from '../SwipeableContainer';
-import {DeleteButton, EditButton} from '../buttons';
 import {Swipeable} from 'react-native-gesture-handler';
-import {Routes} from '../../constants';
+
+import {RootStackParams} from '../../screens';
+import {theme} from '../../styles';
+import {Routes} from '../../types';
+import {DeleteButton, EditButton} from '../buttons';
+import {SwipeableContainer} from '../swipeable';
 import {requestDeleteBoard, useAppDispatch} from '../../store';
 
 const BoardCard = ({title, id}: BoardCardProps) => {

@@ -15,3 +15,20 @@ export type {CommentsResponseDto} from './models/CommentsResponseDto';
 export type {CommentsRequestDto} from './models/CommentsRequestDto';
 export type {CommentsUpdateDto} from './models/CommentsUpdateDto';
 export type {Users} from './models/Users';
+
+export enum Routes {
+  signin = 'SignIn',
+  signup = 'SignUp',
+  home = 'Home',
+  board = 'Board',
+  prayer = 'Prayer',
+  prayers = 'Prayers',
+  subscriptions = 'Subscriptions',
+}
+
+export enum Statuses {
+  IDLE = 'IDLE',
+  PENDING = 'PENDING',
+  FAILED = 'FAILED',
+  SUCCEEDED = 'SUCCEEDED',
+}

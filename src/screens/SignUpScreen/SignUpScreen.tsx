@@ -7,12 +7,10 @@ import * as yup from 'yup';
 
 import {useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
-import {AuthSignUpDto} from '../../types';
-import {useAppDispatch} from '../../store';
-import {requestSignUp} from '../../store';
+import {AuthSignUpDto, Routes} from '../../types';
+import {useAppDispatch, requestSignUp} from '../../store';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParams} from '../root-routes';
-import {Routes} from '../../constants';
 
 const SignUpScreen: React.FC<SignUpScreenProps> = () => {
   const dispatch = useAppDispatch();

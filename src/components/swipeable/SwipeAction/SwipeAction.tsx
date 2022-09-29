@@ -1,4 +1,4 @@
-import {View, Text, StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
 import React from 'react';
 import Animated, {
   SharedValue,

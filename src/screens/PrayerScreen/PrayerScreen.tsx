@@ -1,15 +1,13 @@
-import {View, Text, StyleSheet, FlatList, TextInput} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import React from 'react';
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParams} from '../root-routes';
-import {Routes} from '../../constants';
 import {useSelector} from 'react-redux';
 import {RootState, selectPrayerById} from '../../store';
 import {CommentsSection, MembersList, PrayerStatsTable} from '../../components';
-import {theme} from '../../styles/theme';
+import {Routes} from '../../types';
 
 const PrayerScreen: React.FC<PrayerScreenProps> = ({
-  navigation,
   route,
 }: PrayerScreenProps) => {
   const prayer = useSelector((state: RootState) =>

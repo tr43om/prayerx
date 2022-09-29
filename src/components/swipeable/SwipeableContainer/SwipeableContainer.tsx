@@ -1,5 +1,4 @@
-import {View, Text} from 'react-native';
-import React, {Ref, useRef} from 'react';
+import React, {Ref} from 'react';
 import {PropsWithChildren} from 'react';
 import Animated, {
   Layout,
@@ -8,10 +7,8 @@ import Animated, {
   useSharedValue,
   withSpring,
 } from 'react-native-reanimated';
-import {RectButton, Swipeable} from 'react-native-gesture-handler';
-import {ActionsList} from '../ActionsList';
-import {SwipeAction} from '../SwipeAction';
-import {DeleteButton} from '../buttons';
+import {Swipeable} from 'react-native-gesture-handler';
+import {SwipeActionsList} from '../SwipeActionsList';
 
 const SwipeableContainer = ({
   children,
@@ -30,7 +27,7 @@ const SwipeableContainer = ({
         onSwipeableWillOpen={() => (shared.value = withSpring(1))}
         onSwipeableWillClose={() => (shared.value = withSpring(0))}
         renderRightActions={() => (
-          <ActionsList sharedValue={shared} actions={rightActions} />
+          <SwipeActionsList sharedValue={shared} actions={rightActions} />
         )}>
         {children}
       </Swipeable>

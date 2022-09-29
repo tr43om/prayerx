@@ -18,6 +18,7 @@ export const reducers = {
 export * from './users';
 export * from './boards';
 export * from './prayers';
+export * from './comments';
 
 export default function* rootSaga(): Generator<any, void, any> {
   const sagas = [userSaga, boardsSaga, prayersSaga, commentsSaga];

@@ -9,17 +9,17 @@ import {yupResolver} from '@hookform/resolvers/yup';
 import {useEffect} from 'react';
 import {requestAddPrayer, selectPrayersById, useAppDispatch} from '../../store';
 import {useSelector} from 'react-redux';
-import {requestGetPrayers} from '../../store';
-import {PrayersList} from '../../components/PrayersList ';
 
 import {PrayersRequestDto} from '../../types';
-import {FormInput, PrimaryButton} from '../../components';
-import {selectPrayers} from '../../store';
-import {selectPrayerRequestProgress} from '../../store';
-import {useMemo} from 'react';
-import {RootState} from '../../store/store';
-import {toggleShowAnsweredPrayersList} from '../../store';
-import {selectAnsweredPrayersVisibility} from '../../store/ducks/prayers/selectors';
+import {FormInput, PrimaryButton, PrayersList} from '../../components';
+
+import {
+  toggleShowAnsweredPrayersList,
+  selectPrayerRequestProgress,
+  selectAnsweredPrayersVisibility,
+  requestGetPrayers,
+  RootState,
+} from '../../store';
 
 const PrayersScreen = ({boardId}: PrayersScreenProps) => {
   const dispatch = useAppDispatch();

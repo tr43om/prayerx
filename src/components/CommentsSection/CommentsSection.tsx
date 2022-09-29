@@ -1,31 +1,21 @@
-import {
-  View,
-  Text,
-  StyleSheet,
-  FlatList,
-  SafeAreaView,
-  ScrollView,
-} from 'react-native';
+import {View, Text, StyleSheet, FlatList, SafeAreaView} from 'react-native';
 import * as yup from 'yup';
-import React from 'react';
+import React, {useEffect} from 'react';
 
 import {useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 import {theme} from '../../styles';
-import {useEffect} from 'react';
-import {RootState, useAppDispatch} from '../../store';
 import {
   requestAddComment,
   requestGetComments,
-} from '../../store/ducks/comments';
+  RootState,
+  useAppDispatch,
+} from '../../store';
 import {useSelector} from 'react-redux';
-import {
-  selectComments,
-  selectCommentsById,
-} from '../../store/ducks/comments/selectors';
-import Comment from '../Comment/Comment';
+import {selectCommentsById} from '../../store';
+import {Comment} from '../Comment';
 import {FormInput} from '../FormInput';
-import {IconAdd, IconMessage} from '../../assets';
+import {IconMessage} from '../../assets';
 import {CommentsRequestDto} from '../../types';
 
 const CommentsSection = ({prayerId}: CommentsSectionProps) => {

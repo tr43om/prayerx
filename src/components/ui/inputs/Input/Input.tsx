@@ -1,16 +1,14 @@
 import {
   View,
-  Text,
   TextInputProps,
   StyleSheet,
-  TouchableOpacity,
   ActivityIndicator,
 } from 'react-native';
 import {TextInput} from 'react-native';
 import React from 'react';
 import {IconAdd} from '../../../../assets';
 import {theme} from '../../../../styles';
-import {Statuses} from '../../../../constants';
+import {Statuses} from '../../../../types';
 
 const Input = ({isLoading, ...props}: InputType) => {
   return (

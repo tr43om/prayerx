@@ -1,7 +1,6 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {AuthResponseDto, AuthSignInDto, AuthSignUpDto} from '../../../types';
-import {Statuses} from '../../../constants';
-
+import {Statuses} from '../../../types';
 const initialState: UserSliceType = {
   name: '',
   email: '',

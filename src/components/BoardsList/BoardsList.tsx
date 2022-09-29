@@ -1,6 +1,6 @@
-import {View, Text, StyleSheet} from 'react-native';
-import {FlatList} from 'react-native';
 import React from 'react';
+
+import {View, StyleSheet, FlatList} from 'react-native';
 import {BoardsResponseDto} from '../../types';
 import {BoardCard} from '../BoardCard';
 

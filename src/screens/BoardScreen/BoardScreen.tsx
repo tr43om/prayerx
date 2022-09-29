@@ -1,8 +1,6 @@
-import {View, Text} from 'react-native';
 import React from 'react';
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {PrayerScreen} from '../PrayerScreen';
-import {HomeScreen} from '../HomeScreen';
+
 import {
   PrayersTab,
   RootStackParams,
@@ -11,7 +9,7 @@ import {
 } from '../root-routes';
 import {PrayersScreen} from '../PrayersScreen';
 import {SubscriptionsScreen} from '../SubscriptionsScreen';
-import {Routes} from '../../constants';
+import {Routes} from '../../types';
 import {theme} from '../../styles';
 import {BarBadge} from '../../components';
 

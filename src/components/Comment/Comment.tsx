@@ -1,26 +1,29 @@
-import {View, Text} from 'react-native';
-
 import * as yup from 'yup';
-
-import {useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
+import {useForm} from 'react-hook-form';
 import React, {useRef, useState} from 'react';
-import {CommentsResponseDto} from '../../types';
-import {UserAvatar} from '../UserAvatar';
+
+import {Swipeable} from 'react-native-gesture-handler';
+import {View, Text, StyleSheet} from 'react-native';
+
 import {useSelector} from 'react-redux';
-import {selectUsername} from '../../store';
+
 import {formatDistanceToNow} from 'date-fns';
-import {StyleSheet} from 'react-native';
+
+import {CommentsResponseDto} from '../../types';
 import {theme} from '../../styles';
+
 import {DeleteButton, EditButton} from '../buttons';
+import {SwipeableContainer} from '../swipeable';
+import {FormInput} from '../FormInput';
+import {UserAvatar} from '../UserAvatar';
+
 import {useAppDispatch} from '../../store/store';
 import {
   requestDeleteComment,
   requestUpdateComment,
-} from '../../store/ducks/comments';
-import {Swipeable} from 'react-native-gesture-handler';
-import {SwipeableContainer} from '../SwipeableContainer';
-import {FormInput} from '../FormInput';
+  selectUsername,
+} from '../../store';
 
 const Comment = ({data}: CommentProps) => {
   const {handleSubmit, control} = useForm({
